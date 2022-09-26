@@ -1,0 +1,18 @@
+# Maintainer: Jibreel al-Yahyah <jibreel@email.com>
+
+pkgname=protonk
+pkgver=1.22
+pkgrel=1
+arch=('any')
+license=('GPL')
+# depends=('latencyflex')
+url="https://github.com/xivastudio/protonk"
+pkgdesc="Remastering of Proton Experimental, which uses the latest binary versions as a base, always updating DXVK and VKD3D to their latest versions, as well as adding support for LatencyFlex"
+source=("git+$url.git")
+md5sums=(SKIP)
+
+package() {
+    cp -r "${srcdir}/protonk/usr/" "${pkgdir}/"
+}
+
+
