@@ -1,6 +1,6 @@
 # Maintainer: Barnabé di Kartola <barnabedikartola@gmail.com>
 
-pkgname=prontonk
+pkgname=protonk
 pkgdesc="Remastering of Proton Experimental, which uses the latest binary versions as a base, always updating DXVK and VKD3D to their latest versions, as well as adding support for LatencyFlex"
 # depends=('')
 makedepends=('gdown' 'unzip')
