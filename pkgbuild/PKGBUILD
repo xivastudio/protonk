@@ -1,13 +1,13 @@
 # Maintainer: Barnabé di Kartola <barnabedikartola@gmail.com>
 
-pkgname=biglinux-package-template
-pkgdesc="Package template for biglinux"
+pkgname=prontonk
+pkgdesc="Remastering of Proton Experimental, which uses the latest binary versions as a base, always updating DXVK and VKD3D to their latest versions, as well as adding support for LatencyFlex"
 # depends=('')
-# makedepends=('')
+makedepends=('gdown' 'unzip')
 # conflicts=('')
-pkgver=$(date +%y.%m.%d)
-pkgrel=$(date +%H%M)
-arch=('any')
+pkgver=231119
+pkgrel=1
+arch=('x86_64')
 license=('GPL3')
 url="https://github.com/biglinux/$pkgname"
 provides=("$pkgname")
@@ -20,23 +20,9 @@ elif [ -e "pkgbuild.install" ];then
 fi
 
 package() {
-    # Verify default folder
-    if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
-        InternalDir="${srcdir}/${pkgname}/${pkgname}"
-    else
-        InternalDir="${srcdir}/${pkgname}"
-    fi
+    gdown 1UGmO9FjrFIDnv5fNACuaSF3tzxqJLZ7Q -O proton-K_231119.zip
 
-    # Copy files
-    if [ -d "${InternalDir}/usr" ]; then
-        cp -r "${InternalDir}/usr" "${pkgdir}/"
-    fi
-
-    if [ -d "${InternalDir}/etc" ]; then
-        cp -r "${InternalDir}/etc" "${pkgdir}/"
-    fi
-
-    if [ -d "${InternalDir}/opt" ]; then
-        cp -r "${InternalDir}/opt" "${pkgdir}/"
-    fi
+    mkdir -p ${pkgdir}/usr/share/steam/compatibilitytools.d
+    unzip proton-K_231119.zip -d ${pkgdir}/usr/share/steam/compatibilitytools.d
+    mv "${pkgdir}/usr/share/steam/compatibilitytools.d/Proton-K dev-231119" "${pkgdir}/usr/share/steam/compatibilitytools.d/proton-k"
 }
